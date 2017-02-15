@@ -12,7 +12,7 @@ describe "create User and login" do
     click_on 'Sign Up'
     fill_in 'Email', :with => 'J@email.com'
     fill_in 'Password', :with => 'Frank'
-    click_on 'Log in'
+    click_on 'Login'
     expect(page).to have_content 'J@email.com'
   end
 end
