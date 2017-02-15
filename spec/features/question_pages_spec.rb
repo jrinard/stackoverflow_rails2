@@ -24,7 +24,6 @@ describe "Users" do
     expect(page).to_not have_content 'J@email.com'
   end
 end
-s
 
 describe "Questions" do
   it "Create Question" do
