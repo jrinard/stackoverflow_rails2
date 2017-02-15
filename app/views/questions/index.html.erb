@@ -1,0 +1,24 @@
+<h1>Welcome</h1>
+
+<h3>Questions</h3>
+
+<div class="well">
+
+<% if @questions.any? %>
+<% @questions.each do |question| %>
+ <li>
+   <span class="question-text"><%= link_to question.query, question_path(question) %></span> asked by
+   <%= question.user.first_name %> <%= question.user.last_name %>
+ </li>
+ <% end %>
+ <% else %>
+<p>
+  There are no questions
+</p>
+<% end %>
+</div>
+<br>
+<div class ="bar">
+</div>
+<br>
+<%= link_to "New Question", new_question_path %>

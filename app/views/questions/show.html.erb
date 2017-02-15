@@ -1,0 +1,27 @@
+<h1><%= @question.query %></h1><br>
+
+<% if @question.answers.any? %> <!-- Finds all answers -->
+      <h3>Answers</h3>
+  <ul>
+    <% @question.answers.each do |answer| %> <!-- Loop displays all answers -->
+      <li>
+        <div class="well">
+        <span class="vote-number"><%= answer.get_likes.size %></span> |
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> <%= link_to "Vote", :upvote => answer.id %> |
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><%= link_to "Vote", :downvote => answer.id %>
+        <span class="question-text"><%= answer.content %></span>
+        <%= link_to "Edit", edit_question_answer_path(@question, answer) %> |
+        <%= link_to "Delete", question_answer_path(@question, answer),:data => {:confirm => "Are you sure?",:method => "delete"} %>
+      </li>
+      <br>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no answers yet!</p>
+  </div>
+<% end %>
+
+<hr>
+<%= link_to "Edit Question", edit_question_path %> |
+<%= link_to "Delete Question",  question_path(@question),  :data => {:confirm => "Are you sure?",:method => "delete"} %> |
+<%= link_to "New Answer", new_question_answer_path(@question) %>

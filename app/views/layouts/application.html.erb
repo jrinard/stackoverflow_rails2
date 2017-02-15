@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stackoverflow</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+      <nav class = "nav navbar navbar-inverse shift">
+        StackOverflow |
+        <%= link_to "Questions", questions_path %> |
+          <div class="pull-right shift">
+
+          <% if current_user %>
+            <%= current_user.email %></li>
+             <%= link_to "Log-out", log_out_path, method: "get" %>
+          <% else %>
+             <%= link_to "Log-in", log_in_path %></a> |
+             <%= link_to "Signup", new_user_path %></a>
+          <% end %>
+        </div>
+      </nav>
+        <div class="container">
+          <div class="alert-warning">
+          <%= flash[:alert] %>
+          <%= flash[:notice] %>
+        </div>
+          <%= yield %>
+      </div>
+  </body>
+</html>
